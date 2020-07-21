@@ -10,6 +10,9 @@ export default function PizzaForm() {
         name:'',
         size:'',
         toppings:'',
+        toppings2:'',
+        toppings3:'',
+        toppings4:'',
         instructions:'',
     };
     const [orders, setOrders] = useState([]);
@@ -26,8 +29,13 @@ export default function PizzaForm() {
             .string()
             .required("Please Select A Size"),
         toppings: yup
-            .string()
-            .required("Please pick a topping"),
+            .string(),
+        toppings2: yup
+            .string(),
+        toppings3: yup
+            .string(),
+        toppings4: yup
+            .string(),    
         instructions: yup
             .string()
     });
@@ -69,8 +77,8 @@ export default function PizzaForm() {
         e.persist();
         const newFormData = {
             ...formState,
-            [e.target.name] : e.target.value
-        }
+            [e.target.name] :e.target.value
+        };
         validateChange(e)
         setFormState(newFormData);
     };
@@ -95,20 +103,24 @@ export default function PizzaForm() {
                     <option value="Large">Large</option>
                 </select><br/>
             </label>
-            <label htmlFor="toppings">
+            <label>
                 Toppings<br/>
-                <input type="checkbox" name="toppings" value="pepperoni"
+                <label htmlFor="toppings">
+                    <input type="checkbox" name="toppings" value="pepperoni"
                     onChange={inputChange}/>
-                <label htmlFor="pepperoni">Pepperoni</label><br/>
-                <input type="checkbox" name="toppings" value="sausage"
+                Pepperoni</label><br/>
+                <label htmlFor="toppings2">
+                    <input type="checkbox" name="toppings2" value="sausage"
                     onChange={inputChange}/>
-                <label htmlFor="sausage">Sausage</label><br/>
-                <input type="checkbox" name="toppings" value="pineapple"
+                Sausage</label><br/>
+                <label htmlFor="toppings3">
+                    <input type="checkbox" name="toppings3" value="pineapple"
                     onChange={inputChange}/>
-                <label htmlFor="pineapple">Pineapple</label><br/>
-                <input type="checkbox" name="toppings" value="spinach"
+                Pineapple</label><br/>
+                <label htmlFor="toppings4">
+                    <input type="checkbox" name="toppings4" value="spinach"
                     onChange={inputChange}/>
-                <label htmlFor="spinach">Spinach</label><br/>
+                Spinach</label><br/>
             </label>
             <input
                 type='text'
